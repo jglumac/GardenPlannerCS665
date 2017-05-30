@@ -1,22 +1,11 @@
 package drawableItems;
 
-public class Structure implements IStructure {
-
-	String name;
+public abstract class Structure extends GardenObject implements IStructure {
 
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		System.out.print("Base Structure draw method. \n");
+		System.out.print("Base structure draw method. \n");
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	
 }

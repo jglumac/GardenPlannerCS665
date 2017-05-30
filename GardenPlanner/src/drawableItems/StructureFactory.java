@@ -2,6 +2,15 @@ package drawableItems;
 
 public class StructureFactory extends AbstractFactory {
 
+	public static StructureFactory instance = new StructureFactory();
+	
+	private StructureFactory(){};
+	
+	public static StructureFactory getInstance(){
+		return instance;
+	}
+	
+	
 	@Override
 	public Plant getPlant(String plantType) {
 		return null;

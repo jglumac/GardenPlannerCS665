@@ -33,7 +33,7 @@ public class TreePlant extends Plant{
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		System.out.print("Tree draw method. \n");
+		System.out.print("Tree draw method. Tree:" + this.getName() + " Color:" + Constants.colorMap.get(this.getColor()) + "\n");
 	}
 	
 }

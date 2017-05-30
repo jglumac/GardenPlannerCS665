@@ -5,10 +5,10 @@ public class FactoryGenerator {
 	public static AbstractFactory getFactory(String factory){
 		
 		if(factory.equalsIgnoreCase("Plant")){
-			return new PlantFactory();
+			return PlantFactory.getInstance();
 		}
 		else if(factory.equalsIgnoreCase("Structure")){
-			return new StructureFactory();
+			return StructureFactory.getInstance();
 		}
 		return null;
 		

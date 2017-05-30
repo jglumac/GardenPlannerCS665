@@ -1,16 +1,23 @@
-package drawableItems;
+package userInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Assignment2Test {
+import drawableItems.AbstractFactory;
+import drawableItems.FactoryGenerator;
+import drawableItems.GardenObject;
+import drawableItems.GardenObjectCache;
+import drawableItems.Plant;
+import drawableItems.Structure;
+
+public class GUItest {
 
 	public static List<String> plantList = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.print("Testing...\n\n");
+		System.out.print("Testing Abstract Factory...\n\n");
 		
 		AbstractFactory plantFactory = FactoryGenerator.getFactory("Plant");
 		Plant newHerb = plantFactory.getPlant("Herb");
@@ -52,6 +59,26 @@ public class Assignment2Test {
 		newStake.setName("Tomato Stake");
 		newStake.draw();
 		
+		System.out.print("\n\nTesting Abstract Factory with Prototype...\n\n");
+		GardenObjectCache.loadCache();
+		
+		GardenObject rosemaryClone = GardenObjectCache.getGardenObject("Herb");
+		rosemaryClone.draw();
+		rosemaryClone.setName("Rosemary");
+		rosemaryClone.draw();
+		
+		GardenObject thymeClone = GardenObjectCache.getGardenObject("Herb");
+		thymeClone.draw();
+		thymeClone.setName("Thyme");
+		thymeClone.draw();		
+		
+		GardenObject cukeTrellisClone = GardenObjectCache.getGardenObject("Trellis");
+		cukeTrellisClone.draw();
+		cukeTrellisClone.setName("Cucumber Trellis");
+		cukeTrellisClone.draw();
+		
+		
+		
 	}
 
 	public static List<String> getPlantList() {
@@ -59,7 +86,7 @@ public class Assignment2Test {
 	}
 
 	public void setPlantList(List<String> plantList) {
-		Assignment2Test.plantList = plantList;
+		GUItest.plantList = plantList;
 	}
 
 }

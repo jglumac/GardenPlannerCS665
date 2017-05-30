@@ -1,7 +1,7 @@
 package Mediators;
 
-import drawableItems.Assignment2Test;
 import drawableItems.Plant;
+import userInterface.GUItest;
 
 public class PlantCompatabilityMediator {
 
@@ -22,14 +22,14 @@ public class PlantCompatabilityMediator {
 		
 		//update plant list, which will change color of list but for now just adds to the list
 		try{
-			Assignment2Test.getPlantList().add(selectedPlant.getName());
+			GUItest.getPlantList().add(selectedPlant.getName());
 		}
 		catch(Exception e){
 			System.out.print(e.getMessage());
 		}
 
 		System.out.print("Added " + selectedPlant.getName() + " to list of available, now contains " + 
-						Assignment2Test.getPlantList().size() + " plants.\n");
+						GUItest.getPlantList().size() + " plants.\n");
 		
 	}
 }
