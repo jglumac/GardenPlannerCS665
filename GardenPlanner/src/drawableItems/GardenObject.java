@@ -1,15 +1,34 @@
 package drawableItems;
 
 import java.awt.Color;
+import java.util.Set;
 
-public class GardenObject implements Cloneable {
+public class GardenObject extends Observer implements Cloneable {
 
 	public String name = "";
 	public double diameter;
 	public double posX;
 	public double posY;
 	public Color color = Color.YELLOW;
+	public Set<String> companionPlants;
+	public Set<String> badPlants;
 	
+
+	public Set<String> getCompanionPlants() {
+		return companionPlants;
+	}
+
+	public void setCompanionPlants(Set<String> companionPlants) {
+		this.companionPlants = companionPlants;
+	}
+
+	public Set<String> getBadPlants() {
+		return badPlants;
+	}
+
+	public void setBadPlants(Set<String> badPlants) {
+		this.badPlants = badPlants;
+	}
 
 	public Color getColor() {
 		return color;
@@ -67,6 +86,25 @@ public class GardenObject implements Cloneable {
 
 	public void draw() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(GardenObject gardenObject) {
+		// TODO Auto-generated method stub
+		if(this.getBadPlants()!=null && this.getBadPlants().contains(gardenObject.getName())){
+			this.setColor(Color.red);
+		}
+		
+	}
+	
+	@Override
+	public void updateGood(GardenObject gardenObject) {
+		// TODO Auto-generated method stub
+		if(this.getCompanionPlants()!=null && this.getCompanionPlants().contains(gardenObject.getName()) && 
+				this.getColor()!=Color.red){
+			this.setColor(Color.green);
+		}
 		
 	}
 }

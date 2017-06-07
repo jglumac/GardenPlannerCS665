@@ -1,12 +1,19 @@
 package area;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 import drawableItems.GardenObject;
+import drawableItems.IPlant;
+import drawableItems.Observer;
+import drawableItems.Plant;
+import drawableItems.RedPlantDecorator;
 
 public class GardenArea {
 
+	private AvailableMenu menu = AvailableMenu.getInstance();
+	private List<Observer> observers = new ArrayList<Observer>();
 	List<GardenObject> gardenObjects = new ArrayList<GardenObject>();
 	List<GardenArea> gardens = new ArrayList<GardenArea>();
 	double height;
@@ -28,7 +35,15 @@ public class GardenArea {
 	}
 	
 	public void addGardenObject(GardenObject gardenObject){
-		gardenObjects.add(gardenObject);		
+		notifyAllObservers(gardenObject);
+		for(GardenObject gardenObj:this.getGardenObjects()){
+			if(gardenObj.getBadPlants()!=null && gardenObj.getBadPlants().contains(gardenObject.getName())){
+				gardenObject.setColor(Color.red);
+			}
+		}
+		gardenObjects.add(gardenObject);
+		observers.add(gardenObject);
+		menu.notifyAllObservers(gardenObject);
 	}
 	
 	public void removeGardenObject(GardenObject gardenObject){
@@ -82,4 +97,28 @@ public class GardenArea {
 		}
 	}
 
+	public void drawGarden(){
+		System.out.print("Garden " +this.name+ " contains:\n");
+		for(GardenObject gardenObj:this.gardenObjects){
+			gardenObj.draw();
+		}
+	}
+	
+	public void notifyAllObservers(GardenObject gardenObject){
+	      for (Observer observer : observers) {
+	         observer.update(gardenObject);
+	      }
+	} 
+	
+	public void adjustColors(){
+		List<GardenObject> tempList = new ArrayList<GardenObject>();
+		for(GardenObject gardenObj:this.gardenObjects){
+			tempList.add(gardenObj)	;
+		}
+		gardenObjects.clear();
+		observers.clear();
+		for(GardenObject gardenObj:tempList){
+			this.addGardenObject(gardenObj);
+		}
+	}
 }
