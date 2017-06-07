@@ -113,6 +113,19 @@ public class Assignment3Test {
 		GardenObject calendulaClone = GardenObjectCache.getGardenObject("Flower");
 		menu.addItem(createPlant(calendulaClone,"Calendula"));
 		
+		System.out.print("\n\nTesting Template Pattern...\n");	
+		System.out.print("Dill watering plan: \n");
+		((Plant) dillClone).waterSchedule();
+		System.out.print("\nFennel watering plan: \n");
+		((Plant) fennelClone).waterSchedule();
+		System.out.print("\nYarrow watering plan: \n");
+		((Plant) yarrowClone).waterSchedule();
+		System.out.print("\nStrawberry watering plan: \n");
+		((Plant) strawberryClone).waterSchedule();
+		
+		
+		
+		
 		
 		
 		System.out.print("\n\nTesting Decorator Design Pattern...\n\n");	
