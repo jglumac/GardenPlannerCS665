@@ -166,4 +166,44 @@ public class PlantDBObject {
 		}
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getDiameter() {
+		return diameter;
+	}
+
+	public void setDiameter(double diameter) {
+		this.diameter = diameter;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public HashSet<String> getBadPlants() {
+		return badPlants;
+	}
+
+	public void setBadPlants(HashSet<String> badPlants) {
+		this.badPlants = badPlants;
+	}
+
+	public HashSet<String> getCompanionPlants() {
+		return companionPlants;
+	}
+
+	public void setCompanionPlants(HashSet<String> companionPlants) {
+		this.companionPlants = companionPlants;
+	}
+
 }

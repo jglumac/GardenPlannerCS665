@@ -18,12 +18,12 @@ public class DataLayerFacade {
 	
 	
 	//Get list of objects from database to populate the Available List
-	private HashMap<String, PlantDBObject> plantList(String query){
+	public HashMap<String, PlantDBObject> getPlantList(String query){
 		PlantTable newPlantTable  = PlantTable.getInstance();
 		return newPlantTable.getAllPlants();
 	}
 	
-	private ArrayList<HashSet> getUserGardens(String userName){
+	public ArrayList<HashSet> getUserGardens(String userName){
 		
 		
 		return null;
