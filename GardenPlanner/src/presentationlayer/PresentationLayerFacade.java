@@ -8,7 +8,6 @@ public class PresentationLayerFacade {
 	
 	private static PresentationLayerFacade instance = new PresentationLayerFacade();
 	private BusinessLayerFacade business = BusinessLayerFacade.getInstance();
-	private AvailableMenu menu;
 	private String criteriaQuery; 
 	
 	public static PresentationLayerFacade getInstance(){
@@ -16,20 +15,13 @@ public class PresentationLayerFacade {
 	}
 	
 	private PresentationLayerFacade(){
-		setAvailableMenu(this.criteriaQuery);
+		
 	}
 	
-	private  void setAvailableMenu(String query){
-		this.setMenu(business.getAvailableMenu(query));
+	public void drawAvailableMenu(){
+		business.drawAvailableMenu();
 	}
-
-	public AvailableMenu getMenu() {
-		return menu;
-	}
-
-	public void setMenu(AvailableMenu menu) {
-		this.menu = menu;
-	}
+	
 	public String getCriteriaQuery() {
 		return criteriaQuery;
 	}
@@ -38,6 +30,20 @@ public class PresentationLayerFacade {
 		this.criteriaQuery = criteriaQuery;
 	}
 	
+	public void displayUsersSelection(String selection){
+		business.displaySelection(selection);
+	}
 	
+	public void addToGarden(String selection){
+		business.addToGarden(selection);
+	}
+	
+	public void drawGarden(){
+		business.drawGarden();
+	}
+	
+	public void undoCommand(){
+		business.undoCommand();
+	}
 
 }

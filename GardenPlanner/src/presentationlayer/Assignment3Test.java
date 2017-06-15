@@ -183,7 +183,7 @@ public class Assignment3Test {
 			userInput = scanner.next();
 			if(userInput.equalsIgnoreCase("u")){
 				commManager.Undo();
-				garden.drawGarden();
+				garden.draw();
 			}
 			else if(!userInput.equalsIgnoreCase("e")){
 				try {
@@ -191,7 +191,7 @@ public class Assignment3Test {
 					GardenObject newGO = (GardenObject) menu.getAvailableList().get(Integer.parseInt(userInput)).clone();
 					newGO.setColor(Color.YELLOW);
 					commManager.ExecuteCommand(new AddObjectCommand(garden, newGO));
-					garden.drawGarden();
+					garden.draw();
 				} catch (NumberFormatException e) {
 					System.out.print("Invalid input, please use valid entry. \n");
 				}

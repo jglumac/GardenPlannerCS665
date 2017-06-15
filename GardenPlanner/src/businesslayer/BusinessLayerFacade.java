@@ -12,7 +12,11 @@ import datalayer.PlantDBObject;
 public class BusinessLayerFacade {
 
 	private DataLayerFacade data= DataLayerFacade.getInstance();
+	private String criteriaQuery = null;
 	
+	private AvailableMenu available = AvailableMenu.getInstance();
+	private GardenArea garden = new GardenArea(10, 10, "Jon's Garden");
+	private CommandManager commManager = new CommandManager();
 	private HashMap<String, PlantDBObject> dbPlantList = new HashMap<String, PlantDBObject>();
 	
 	private static BusinessLayerFacade instance = new BusinessLayerFacade();
@@ -23,12 +27,13 @@ public class BusinessLayerFacade {
 	
 	private BusinessLayerFacade(){
 		GardenObjectCache.loadCache();
+		setAvailableMenu();
 	}
 	
-	public AvailableMenu getAvailableMenu(String query){
+	private void setAvailableMenu(){
 		
-		setPlantsFromDB(query);
-		AvailableMenu available = AvailableMenu.getInstance();
+		setPlantsFromDB(this.criteriaQuery);
+
 		Iterator iter = dbPlantList.entrySet().iterator();
 		while(iter.hasNext()){
 			Map.Entry pair = (Map.Entry)iter.next();
@@ -43,13 +48,41 @@ public class BusinessLayerFacade {
 			available.addItem(clone);
 		}
 		
-		return available;
-		
+	}
+	
+	private AvailableMenu getAvailableMenu(){
+		return this.available;
 	}
 	
 	private void setPlantsFromDB(String query){
 		this.dbPlantList = data.getPlantList(query);
 	}
 	
+	public void drawAvailableMenu(){
+		Iterator iter = getAvailableMenu().getAvailableList().entrySet().iterator();
+		while(iter.hasNext()){
+			Map.Entry pair = (Map.Entry)iter.next();
+			System.out.print("" + pair.getKey() + ") ");
+			((GardenObject) pair.getValue()).draw();
+		}
+	}
+	
+	public void displaySelection(String selection){
+		System.out.print("User selected: " + getAvailableMenu().getAvailableList().get(Integer.parseInt(selection)).getName() + "\n");
+	}
+	
+	public void addToGarden(String selection){
+		GardenObject newGO = (GardenObject) getAvailableMenu().getAvailableList().get(Integer.parseInt(selection)).clone();
+		newGO.setColor(Color.YELLOW);
+		commManager.ExecuteCommand(new AddObjectCommand(garden, newGO));
+	}
+	
+	public void drawGarden(){
+		garden.draw();
+	}
+	
+	public void undoCommand(){
+		commManager.Undo();
+	}
 	
 }

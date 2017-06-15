@@ -91,7 +91,7 @@ public class GardenArea {
 		}
 	}
 
-	public void drawGarden(){
+	public void draw(){
 		System.out.print("Garden " +this.name+ " contains:\n");
 		for(GardenObject gardenObj:this.gardenObjects){
 			gardenObj.draw();
@@ -112,6 +112,7 @@ public class GardenArea {
 		gardenObjects.clear();
 		observers.clear();
 		for(GardenObject gardenObj:tempList){
+			gardenObj.setColor(Color.yellow);
 			this.addGardenObject(gardenObj);
 		}
 	}

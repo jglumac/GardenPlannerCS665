@@ -20,11 +20,11 @@ public class AvailableMenuView {
 	
 	public void draw(){
 		System.out.print("\nAvailable objects: \n");
-		Iterator iter = presentation.getMenu().getAvailableList().entrySet().iterator();
-		while(iter.hasNext()){
-			Map.Entry pair = (Map.Entry)iter.next();
-			System.out.print("" + pair.getKey() + ") ");
-			((GardenObject) pair.getValue()).draw();
-		}
+		presentation.drawAvailableMenu();
 	}
+	
+	public void displayUsersSelection(String userInput){
+		presentation.displayUsersSelection(userInput);
+	}
+	
 }
