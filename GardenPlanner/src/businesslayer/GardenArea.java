@@ -28,6 +28,10 @@ public class GardenArea {
 		this.name = name;
 	}
 	
+	public GardenArea() {
+
+	}
+
 	public void addGardenObject(GardenObject gardenObject){
 		notifyAllObservers(gardenObject);
 		for(GardenObject gardenObj:this.getGardenObjects()){

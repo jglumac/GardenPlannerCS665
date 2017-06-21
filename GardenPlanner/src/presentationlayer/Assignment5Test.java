@@ -10,8 +10,6 @@ public class Assignment5Test {
 
 	public static void main(String[] args) {
 		
-		PresentationLayerFacade presentation = PresentationLayerFacade.getInstance();
-		
 		GardenAreaView garden = GardenAreaView.getInstance();
 		AvailableMenuView available = AvailableMenuView.getInstance();
 		

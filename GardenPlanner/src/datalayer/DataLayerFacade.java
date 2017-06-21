@@ -30,4 +30,21 @@ public class DataLayerFacade {
 		
 	}
 	
+	public ArrayList<GardenDBObject> getGardensByUserID(String userName){
+		UserTable newUserTable = UserTable.getInstance();
+		GardenTable newGardenTable = GardenTable.getInstance();
+		if(newUserTable.getUserID(userName)!=null){
+			//get gardens for existing user
+			return newGardenTable.getGardens(newUserTable.getUserID(userName));
+			
+		}
+		else{
+			//create new user
+			newUserTable.addUser(userName);
+			return new ArrayList<GardenDBObject>();
+		}
+		
+		
+	}
+	
 }

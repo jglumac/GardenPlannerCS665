@@ -11,6 +11,7 @@ public class AvailableMenu {
 
 	private static AvailableMenu instance = new AvailableMenu();
 	private HashMap<Integer,GardenObject> availableList = new HashMap<Integer,GardenObject>();
+	private HashMap<String,Integer> availableHash = new HashMap<String,Integer>();
 	
 	public static AvailableMenu getInstance(){
 		return instance;
@@ -26,6 +27,14 @@ public class AvailableMenu {
 		this.availableList = availableList;
 	}
 
+	public HashMap<String, Integer> getAvailableHash() {
+		return availableHash;
+	}
+
+	public void setAvailableHash(HashMap<String, Integer> availableHash) {
+		this.availableHash = availableHash;
+	}
+	
 	public List<Observer> getObservers() {
 		return observers;
 	}
@@ -38,6 +47,7 @@ public class AvailableMenu {
 	
 	public void addItem(GardenObject gardenObj){
 		observers.add(gardenObj);
+		availableHash.put(gardenObj.getName(),availableList.size()+1);
 		availableList.put(availableList.size()+1, gardenObj);
 	}
 	

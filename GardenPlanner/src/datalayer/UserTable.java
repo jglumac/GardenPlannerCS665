@@ -27,6 +27,7 @@ public class UserTable {
 	
 	public void addUser(String userName){
 		lookUp.put(userName, lookUp.size()+1);
+		System.out.println("User: " + userName + " added to system!");
 	}
 	
 	public Integer getUserID(String userName){

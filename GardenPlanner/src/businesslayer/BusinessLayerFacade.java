@@ -1,6 +1,7 @@
 package businesslayer;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,7 +16,10 @@ public class BusinessLayerFacade {
 	private String criteriaQuery = null;
 	
 	private AvailableMenu available = AvailableMenu.getInstance();
-	private GardenArea garden = new GardenArea(10, 10, "Jon's Garden");
+	private GardenArea garden = new GardenArea();
+	private User currentUser = User.getInstance();
+
+
 	private CommandManager commManager = new CommandManager();
 	private HashMap<String, PlantDBObject> dbPlantList = new HashMap<String, PlantDBObject>();
 	
@@ -83,6 +87,40 @@ public class BusinessLayerFacade {
 	
 	public void undoCommand(){
 		commManager.Undo();
+	}
+	
+	public int getGardensByUserID(String userName){
+		currentUser.setName(userName);
+		ArrayList<GardenDBObject> dbGardens = data.getGardensByUserID(userName);
+		for(GardenDBObject dbGarden:dbGardens){
+			currentUser.addGarden(translateGardenToUserGarden(dbGarden));
+		}
+		return dbGardens.size();
+	}
+	
+	public void drawUserGardens(){
+		currentUser.drawGardens();
+	}
+	
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+	
+	public UserGarden translateGardenToUserGarden(GardenDBObject dbGarden){
+		
+		UserGarden newGarden = new UserGarden(dbGarden.getName());
+		for(PlantDBObject dbplant:dbGarden.getPlants()){
+			newGarden.addObject((GardenObject) getAvailableMenu().getAvailableList().get(getAvailableMenu().getAvailableHash().get(dbplant.getName())).clone());
+		}
+		return newGarden;
+	}
+	
+	public void setGardenName(String name){
+		garden.setName(name);
 	}
 	
 }

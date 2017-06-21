@@ -42,8 +42,20 @@ public class PresentationLayerFacade {
 		business.drawGarden();
 	}
 	
+	public void setGardenName(String name){
+		business.setGardenName(name);
+	}
+	
 	public void undoCommand(){
 		business.undoCommand();
+	}
+	
+	public int getGardensByUserID(String userName){
+		return business.getGardensByUserID(userName);
+	}
+	
+	public void drawUserGardens(){
+		business.drawUserGardens();
 	}
 
 }

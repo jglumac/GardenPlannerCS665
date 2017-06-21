@@ -11,7 +11,7 @@ import utilities.Constants;
 public class GardenTable {
 
 	private HashMap<Integer,Set> lookUp = new HashMap<Integer, Set>();
-	private HashMap<Integer,ArrayList> gardens = new HashMap<Integer, ArrayList>();
+	private HashMap<String,ArrayList> gardens = new HashMap<String, ArrayList>();
 	
 	private static GardenTable instance = new GardenTable();
 	
@@ -24,20 +24,24 @@ public class GardenTable {
 	}
 	
 	private void populateTables(){
-		lookUp.put(1, new HashSet<Integer>(Arrays.asList(1,2,3)));
-		lookUp.put(2, new HashSet<Integer>(Arrays.asList(4)));
+		lookUp.put(1, new HashSet<String>(Arrays.asList("GardenOne","VeggieGarden","HerbGarden")));
+		lookUp.put(2, new HashSet<String>(Arrays.asList("GardenFour")));
 		
-		gardens.put(1, new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Dill)));
-		gardens.put(2, new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Tomato)));
-		gardens.put(3, new ArrayList<String>(Arrays.asList(Constants.Fennel,Constants.Dill)));
-		gardens.put(4, new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Borage,Constants.Cucumber)));
+		gardens.put("GardenOne", new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Dill)));
+		gardens.put("VeggieGarden", new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Tomato)));
+		gardens.put("HerbGarden", new ArrayList<String>(Arrays.asList(Constants.Fennel,Constants.Dill)));
+		gardens.put("GardenFour", new ArrayList<String>(Arrays.asList(Constants.Carrot,Constants.Borage,Constants.Cucumber)));
 		
 
 	}
 	
 	
-	private HashSet getGardens(Integer userID){
-		return (HashSet) lookUp.get(userID);
+	public ArrayList<GardenDBObject> getGardens(Integer userID){
+		ArrayList<GardenDBObject> gardenList = new ArrayList<GardenDBObject>();
+		HashSet gardens = (HashSet) lookUp.get(userID);
+		gardens.forEach(garden->gardenList.add(new GardenDBObject((String) garden, this.gardens.get(garden))));
+		return gardenList;
+		
 	}
 	
 	private ArrayList getGardenList(Integer gardenID){

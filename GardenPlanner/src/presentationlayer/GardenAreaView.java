@@ -26,4 +26,8 @@ public class GardenAreaView {
 		presentation.drawGarden();
 	}
 	
+	public void setGardenName(String name){
+		presentation.setGardenName(name);
+	}
+	
 }

@@ -26,7 +26,7 @@ import businesslayer.RedPlantDecorator;
 import businesslayer.Structure;
 import businesslayer.YellowPlantDecorator;
 
-public class Assignment3Test {
+public class Assignment3and4Test {
 
 	public static List<String> plantList = new ArrayList<String>();
 	
@@ -289,7 +289,7 @@ public class Assignment3Test {
 	}
 
 	public void setPlantList(List<String> plantList) {
-		Assignment3Test.plantList = plantList;
+		Assignment3and4Test.plantList = plantList;
 	}
 
 }
