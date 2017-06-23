@@ -10,7 +10,7 @@ public abstract class PlantDecorator implements IPlant{
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

@@ -202,7 +202,7 @@ public class Assignment3and4Test {
 	}
 
 	private static GardenObject createPlant(GardenObject clone, String type) {
-		// TODO Auto-generated method stub
+		
 		switch(type){
 			case "Rosemary":
 				clone.setName(type);

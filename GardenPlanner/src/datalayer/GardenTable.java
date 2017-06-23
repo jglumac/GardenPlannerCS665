@@ -47,6 +47,11 @@ public class GardenTable {
 	private ArrayList getGardenList(Integer gardenID){
 		return gardens.get(gardenID);		
 	}
+
+	public void addGarden(Integer userID, String gardenName, ArrayList<String> plants) {
+		this.lookUp.get(userID).add(gardenName);
+		gardens.put(gardenName, plants);		
+	}
 	
 	
 }

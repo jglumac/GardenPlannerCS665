@@ -14,13 +14,13 @@ public class AddObjectCommand extends Command {
 	
 	@Override
 	public void Execute() {
-		// TODO Auto-generated method stub
+		
 		gardenArea.addGardenObject(gardenObject);
 	}
 
 	@Override
 	public void Undo() {
-		// TODO Auto-generated method stub
+		
 		gardenArea.getGardenObjects().remove(gardenObject);
 		AvailableMenu.getInstance().resetColors();
 		gardenArea.adjustColors();

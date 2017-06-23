@@ -15,7 +15,7 @@ public class GUItest {
 	public static List<String> plantList = new ArrayList<String>();
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		
 		System.out.print("Testing Abstract Factory...\n\n");
 		

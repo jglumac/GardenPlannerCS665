@@ -16,52 +16,55 @@ public class Assignment6Test {
 		
 		System.out.print("\nTesting Garden UI: \n");	
 		
-	    Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter user name: \n");
-		userInput = scanner.nextLine();
-		
-		int gNum = user.getGardensByUserID(userInput);
-		user.drawUserGardens();
-		if(gNum>0){
-			System.out.println("Select an existing garden to edit or type C to create a new garden.");
+		while(!userInput.equalsIgnoreCase("E")){
+		    Scanner scanner = new Scanner(System.in);
+			System.out.print("Enter user name: \n");
 			userInput = scanner.nextLine();
-		}
-		else{
-			userInput = "C";
-		}
-		
-		if(userInput.equalsIgnoreCase("C")){
 			
-			System.out.println("Enter name for new garden: ");
-			gardenName = scanner.nextLine();
-			garden.setGardenName(gardenName);
-			
-			while(!userInput.equalsIgnoreCase("E")){
-				available.draw();			
-	
-				printMenu();
-				userInput = scanner.next();
-				if(userInput.equalsIgnoreCase("U")){
-					garden.undo();
-					garden.drawGarden();
-				}
-				else if(!userInput.equalsIgnoreCase("E")){
-					try {
-						available.displayUsersSelection(userInput);
-						garden.addToGarden(userInput);
-						garden.drawGarden();
-					} catch (NumberFormatException e) {
-						System.out.print("Invalid input, please use valid entry. \n");
-					}
-				}
-				else if(!userInput.equalsIgnoreCase("S")){
-					//save garden
-				}
-	
+			int gNum = user.getGardensByUserID(userInput);
+			user.drawUserGardens();
+			if(gNum>0){
+				System.out.println("Select an existing garden to edit or type C to create a new garden.");
+				userInput = scanner.nextLine();
 			}
-		}
-		else{
-			//load existing garden
+			else{
+				userInput = "C";
+			}
+			
+			if(userInput.equalsIgnoreCase("C")){
+				
+				System.out.println("Enter name for new garden: ");
+				gardenName = scanner.nextLine();
+				garden.setGardenName(gardenName);
+				
+				while(!userInput.equalsIgnoreCase("E")&&!userInput.equalsIgnoreCase("S")){
+					available.draw();			
+		
+					printMenu();
+					userInput = scanner.next();
+					if(userInput.equalsIgnoreCase("U")){
+						garden.undo();
+						garden.drawGarden();
+					}
+					else if(userInput.equalsIgnoreCase("S")){
+						garden.save();
+					}
+					else if(!userInput.equalsIgnoreCase("E")){
+						try {
+							available.displayUsersSelection(userInput);
+							garden.addToGarden(userInput);
+							garden.drawGarden();
+						} catch (NumberFormatException e) {
+							System.out.print("Invalid input, please use valid entry. \n");
+						}
+					}
+	
+		
+				}
+			}
+			else{
+				//load existing garden
+			}
 		}
 		
 	}

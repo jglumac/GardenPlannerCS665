@@ -30,4 +30,8 @@ public class GardenAreaView {
 		presentation.setGardenName(name);
 	}
 	
+	public void save(){
+		presentation.saveGarden();
+	}
+	
 }

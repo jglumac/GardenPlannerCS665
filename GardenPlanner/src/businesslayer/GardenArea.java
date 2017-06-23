@@ -120,4 +120,12 @@ public class GardenArea {
 			this.addGardenObject(gardenObj);
 		}
 	}
+	
+	public void clear(){
+		this.getGardenObjects().clear();
+		this.getGardens().clear();
+		this.setHeight(0);
+		this.setWidth(0);
+		this.setName(null);
+	}
 }

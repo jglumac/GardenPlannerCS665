@@ -7,6 +7,8 @@ import java.util.HashSet;
 public class DataLayerFacade {
 
 	private static DataLayerFacade instance = new DataLayerFacade();
+	private UserTable newUserTable = UserTable.getInstance();
+	private GardenTable newGardenTable = GardenTable.getInstance();
 	
 	public static DataLayerFacade getInstance(){
 		return instance;
@@ -31,8 +33,7 @@ public class DataLayerFacade {
 	}
 	
 	public ArrayList<GardenDBObject> getGardensByUserID(String userName){
-		UserTable newUserTable = UserTable.getInstance();
-		GardenTable newGardenTable = GardenTable.getInstance();
+
 		if(newUserTable.getUserID(userName)!=null){
 			//get gardens for existing user
 			return newGardenTable.getGardens(newUserTable.getUserID(userName));
@@ -45,6 +46,10 @@ public class DataLayerFacade {
 		}
 		
 		
+	}
+	
+	public void saveGarden(String userName, String gardenName, ArrayList<String> plants){
+		newGardenTable.addGarden(newUserTable.getUserID(userName), gardenName, plants);
 	}
 	
 }

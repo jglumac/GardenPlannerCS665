@@ -123,4 +123,16 @@ public class BusinessLayerFacade {
 		garden.setName(name);
 	}
 	
+	public void saveGarden(){
+		ArrayList<String> plants = new ArrayList<String>();
+		for(GardenObject plant:garden.getGardenObjects()){
+			plants.add(plant.getName());
+		}
+		data.saveGarden(currentUser.getName(),garden.getName(),plants);
+		garden.clear();
+		currentUser.getGardenList().clear();
+		
+		
+	}
+	
 }

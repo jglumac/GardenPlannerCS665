@@ -57,5 +57,9 @@ public class PresentationLayerFacade {
 	public void drawUserGardens(){
 		business.drawUserGardens();
 	}
+	
+	public void saveGarden(){
+		business.saveGarden();
+	}
 
 }

@@ -18,7 +18,7 @@ public class StructureFactory extends AbstractFactory {
 
 	@Override
 	public Structure getStructure(String structureType) {
-		// TODO Auto-generated method stub
+		
 		if(structureType==null){
 			return null;
 		}

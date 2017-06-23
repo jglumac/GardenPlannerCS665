@@ -12,7 +12,7 @@ public class PlantFactory extends AbstractFactory{
 	
 	@Override
 	public Plant getPlant(String plantType) {
-		// TODO Auto-generated method stub
+		
 		if(plantType==null){
 			return null;
 		}
@@ -41,7 +41,7 @@ public class PlantFactory extends AbstractFactory{
 
 	@Override
 	public Structure getStructure(String structureType) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

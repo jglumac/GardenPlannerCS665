@@ -85,13 +85,13 @@ public class GardenObject extends Observer implements Cloneable {
 	   }
 
 	public void draw() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void update(GardenObject gardenObject) {
-		// TODO Auto-generated method stub
+		
 		if(this.getBadPlants()!=null && this.getBadPlants().contains(gardenObject.getName())){
 			this.setColor(Color.red);
 		}
@@ -100,7 +100,7 @@ public class GardenObject extends Observer implements Cloneable {
 	
 	@Override
 	public void updateGood(GardenObject gardenObject) {
-		// TODO Auto-generated method stub
+		
 		if(this.getCompanionPlants()!=null && this.getCompanionPlants().contains(gardenObject.getName()) && 
 				this.getColor()!=Color.red){
 			this.setColor(Color.green);
